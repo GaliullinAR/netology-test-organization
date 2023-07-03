@@ -9,5 +9,17 @@ export class WidgetCard {
     this.inputForm = this.selector.querySelector('.form__input');
 
 
+    
   }
+
+  inputCardValue(e) {
+    e.preventDefault();
+    const value = e.target.value;
+    if (value.length === 4 ||
+        value.length === 8 ||
+        value.length === 12) {
+      e.target.value += ' ';
+        }
+  }
+  
 }

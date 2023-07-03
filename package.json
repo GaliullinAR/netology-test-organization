@@ -34,6 +34,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "card-info": "^1.2.4",
     "core-js": "3"
   }
 }
