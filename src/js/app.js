@@ -1,34 +1,25 @@
-import CardInfo from "card-info";
+import mir from '../images/mir.svg';
+import mastercard from '../images/mastercard.svg';
+import maestro from '../images/maestro.svg';
+import visa from '../images/visa.png';
+import { WidgetCard } from "./WidgerCard";
+import { WidgetFormRender } from "./WidgerFormRender";
 
-const input = document.querySelector(".form__input");
-let count = 0;
-input.addEventListener("input", (e) => {
-  e.preventDefault();
-  const value = e.target.value.trim();
-  const arr = value.split("");
-
-  const cardInfo = new CardInfo(value);
-
-  const brandCard = document.querySelector(
-    `[data-type="${cardInfo.brandAlias}"]`
-  );
-  const listItems = document.querySelectorAll(".list__item");
-
-  if (value.length > 0 && cardInfo.brandAlias !== null) {
-    listItems.forEach((item) => {
-      item.classList.remove("valid");
-      item.classList.add("invalid");
-    });
-
-    brandCard.parentElement.classList.remove("invalid");
-    brandCard.parentElement.classList.add("valid");
-  }
-
-
-  if (value.length === 0) {
-    listItems.forEach((item) => {
-      item.classList.remove("valid");
-      item.classList.add("invalid");
-    });
-  }
+const renderWidget = new WidgetFormRender('card__container', {
+  cardTypes: {
+    mir,
+    mastercard,
+    maestro,
+    visa
+  },
+  titleName: 'Проверьте вашу карту',
+  placeholder: 'Введите номер карты',
+  buttonName: 'Проверить'
 });
+
+renderWidget.renderFormWidget();
+
+const widgetCard = new WidgetCard(renderWidget.gettingSelectorName);
+
+
+
