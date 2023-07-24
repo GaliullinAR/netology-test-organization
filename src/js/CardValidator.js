@@ -1,6 +1,6 @@
-import luhn from "./luhn";
-import cardTypes from "./cardTypes";
-import getCardTypeByNumber from "./getCardTypeByNumber";
+import luhn from './luhn';
+import cardTypes from './cardTypes';
+import getCardTypeByNumber from './getCardTypeByNumber';
 
 export default class CardValidator {
   constructor(widget) {
@@ -26,9 +26,9 @@ export default class CardValidator {
     event.preventDefault();
     const typedCardType = this.getTypedCardType();
     if (
-      typedCardType &&
-      luhn(this.widget.inputValue) &&
-      this.checkDigitCount(typedCardType)
+      typedCardType
+      && luhn(this.widget.inputValue)
+      && this.checkDigitCount(typedCardType)
     ) {
       this.widget.showValidMessage();
     } else {

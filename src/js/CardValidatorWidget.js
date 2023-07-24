@@ -14,7 +14,7 @@ export default class CardValidatorWidget {
       waiting:
         "We'll check your number against the Luhn Algorithm to see if it is a valid credit card number.",
       valid:
-        "The credit card number you entered passed the Luhn Check and is therefore a valid credit card number!",
+        'The credit card number you entered passed the Luhn Check and is therefore a valid credit card number!',
       invalid:
         "The credit card number you entered failed the Luhn Check. It's not valid, did you make a typo?",
     };
@@ -42,25 +42,25 @@ export default class CardValidatorWidget {
     </form>
     `;
 
-    this.formEl = this.container.querySelector("form");
+    this.formEl = this.container.querySelector('form');
     this.cardImagesContainerEl = this.container.querySelector(
-      ".card_images_container"
+      '.card_images_container',
     );
-    this.inputEl = this.container.querySelector(".card_input");
-    this.resultImageEl = this.container.querySelector(".result_img");
-    this.messageEl = this.container.querySelector(".message");
+    this.inputEl = this.container.querySelector('.card_input');
+    this.resultImageEl = this.container.querySelector('.result_img');
+    this.messageEl = this.container.querySelector('.message');
 
-    this.formEl.addEventListener("submit", this.onSubmit.bind(this));
-    this.inputEl.addEventListener("keyup", this.onKeyUp.bind(this));
+    this.formEl.addEventListener('submit', this.onSubmit.bind(this));
+    this.inputEl.addEventListener('keyup', this.onKeyUp.bind(this));
 
     this.showWaitingMessage();
   }
 
   addCardType(cardType) {
-    const cardImage = document.createElement("div");
-    cardImage.classList.add("card_image");
+    const cardImage = document.createElement('div');
+    cardImage.classList.add('card_image');
     cardImage.title = cardType.fullName;
-    cardImage.setAttribute("data-id", cardType.name);
+    cardImage.setAttribute('data-id', cardType.name);
     this.cards.set(cardType.name, cardImage);
     this.cardImagesContainerEl.appendChild(cardImage);
   }
@@ -72,11 +72,11 @@ export default class CardValidatorWidget {
   selectCard(cardType) {
     this.unselectCards();
     if (!cardType) return;
-    this.cards.get(cardType.name).classList.add("selected");
+    this.cards.get(cardType.name).classList.add('selected');
   }
 
   unselectCards() {
-    for (const card of this.cards.values()) card.classList.remove("selected");
+    for (const card of this.cards.values()) card.classList.remove('selected');
   }
 
   showWaitingMessage() {
@@ -85,22 +85,22 @@ export default class CardValidatorWidget {
   }
 
   showValidMessage() {
-    this.resultImageEl.classList.remove("invalid");
-    this.resultImageEl.classList.add("valid");
+    this.resultImageEl.classList.remove('invalid');
+    this.resultImageEl.classList.add('valid');
     this.resultImageEl.hidden = false;
     this.messageEl.textContent = this.messages.valid;
   }
 
   showInvalidMessage() {
-    this.resultImageEl.classList.remove("valid");
-    this.resultImageEl.classList.add("invalid");
+    this.resultImageEl.classList.remove('valid');
+    this.resultImageEl.classList.add('invalid');
     this.resultImageEl.hidden = false;
     this.messageEl.textContent = this.messages.invalid;
   }
 
   bindToDOM(container) {
     if (!(container instanceof HTMLElement)) {
-      throw new Error("container is not HTMLElement");
+      throw new Error('container is not HTMLElement');
     }
     this.container = container;
   }
@@ -123,7 +123,7 @@ export default class CardValidatorWidget {
 
   checkBinding() {
     if (this.container === null) {
-      throw new Error("TaskManager not binded to DOM");
+      throw new Error('TaskManager not binded to DOM');
     }
   }
 }
