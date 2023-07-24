@@ -1,25 +1,10 @@
-import mir from '../images/mir.svg';
-import mastercard from '../images/mastercard.svg';
-import maestro from '../images/maestro.svg';
-import visa from '../images/visa.png';
-import { WidgetCard } from "./WidgerCard";
-import { WidgetFormRender } from "./WidgerFormRender";
+import CardValidatorWidget from "./CardValidatorWidget";
+import CardValidator from "./CardValidator";
 
-const renderWidget = new WidgetFormRender('card__container', {
-  cardTypes: {
-    mir,
-    mastercard,
-    maestro,
-    visa
-  },
-  titleName: 'Проверьте вашу карту',
-  placeholder: 'Введите номер карты',
-  buttonName: 'Проверить'
-});
+const cardValidatorWidget = new CardValidatorWidget();
+cardValidatorWidget.bindToDOM(
+  document.querySelector("#card_validator_widget_container")
+);
 
-renderWidget.renderFormWidget();
-
-const widgetCard = new WidgetCard(renderWidget.gettingSelectorName);
-
-
-
+const cardValidator = new CardValidator(cardValidatorWidget);
+cardValidator.init();
