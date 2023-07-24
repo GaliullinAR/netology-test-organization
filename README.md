@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/g8c5x6ugb09r3f1u?svg=true)](https://ci.appveyor.com/project/GaliullinAR/netology-test-organization)
